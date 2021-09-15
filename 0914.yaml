@@ -41,18 +41,10 @@ proxies:
   - {name: 馃嚠馃嚬 IT_1251, server: 212.102.54.181, port: 46642, type: ss, cipher: aes-256-gcm, password: gYL83DQWXuDbxmZAVVtUTXaK}
   - {name: 馃嚪馃嚫 RS_1816, server: 152.89.160.213, port: 33998, type: ss, cipher: aes-256-gcm, password: NHwQTPLCfaTMSqTnU3mjcSxe}
 proxy-groups:
-  - name: 🚀 节点选择
-    type: select
-    proxies:
-      - ♻️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇺🇲 美国节点
-      - 🇯🇵 日本节点
-      - 🚀 手动切换
-      - DIRECT
   - name: 🚀 手动切换
     type: select
     proxies:
+      - ♻️ 自动选择
       - 🇺🇲 馃嚭馃嚫 US_2215
       - 🇩🇪 馃嚛馃嚜 DE_528
       - 🇷🇴 馃嚪馃嚧 RO_1713
@@ -88,6 +80,15 @@ proxy-groups:
       - 馃嚪馃嚫 RS_1831
       - 馃嚠馃嚬 IT_1251
       - 馃嚪馃嚫 RS_1816
+   - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🇭🇰 香港节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - 🚀 手动切换
+      - DIRECT
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
