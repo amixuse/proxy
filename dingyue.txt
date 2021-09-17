@@ -44,6 +44,7 @@ SSR订阅地址：
 https://raw.githubusercontent.com/ssrsub/ssr/master/ssrsub
 SS订阅地址：
 https://raw.githubusercontent.com/ssrsub/ssr/master/ss-sub
+https://github.com/colatiger/v2ray-nodes ;master内有ss.md、proxy.md、trojan.md、vmess.md  （自行进行节点转换）
 V2ray订阅地址：
 https://raw.githubusercontent.com/ssrsub/ssr/master/v2ray
 Trojan订阅地址：
