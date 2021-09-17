@@ -1,6 +1,6 @@
 # "#"怎么用
 # proxy
-//订阅源获取http://i.sqeven.me/
+# 订阅源获取http://i.sqeven.me/
 01. 如何处理
 
 BASE64: 订阅链接---转为QX可用，提取节点；
