@@ -1,3 +1,4 @@
+## from site adderss: https://github.com/wuye999/AutoSyncScript/blob/main/proxybak.txt
 port: 7890
 socks-port: 7891
 allow-lan: true
