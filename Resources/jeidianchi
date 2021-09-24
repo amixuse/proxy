@@ -1,0 +1,158 @@
+# 所有节点均从公开互联网上抓取，使用clash自动检查可用性即可
+# port of HTTP
+port: 7890
+
+# port of SOCKS5
+socks-port: 7891
+
+# (HTTP and SOCKS5 in one port)
+# mixed-port: 7890
+
+# redir port for Linux and macOS
+# redir-port: 7892
+
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+proxies:
+
+proxy-groups:
+  - name: Proxies
+    type: select
+    proxies:
+      - cn
+      - vmess
+  - name: cn
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - cn
+  - name: vmess
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    use:
+      - vmess
+      
+proxy-providers:
+  cn:
+    type: http
+    url: https://suo.yt/yQmxDwn
+    path: hidarihitomi/proxy/cn.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  vmess:
+    type: http
+    url: https://suo.yt/mR2IGAj
+    path: hidarihitomi/proxy/vmess.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+      
+rule-providers:
+  Lan:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
+    path: hidarihitomi/rule/rule-provider_Lan.yaml
+    interval: 86400
+  GoogleFCM:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleFCM.yaml
+    path: hidarihitomi/rule/rule-provider_GoogleFCM.yaml
+    interval: 86400
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
+    path: hidarihitomi/rule/rule-provider_NetEaseMusic.yaml
+    interval: 86400
+  Porn:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Porn.yaml
+    path: hidarihitomi/rule/rule-provider_Porn.yaml
+    interval: 86400
+  GlobalMedia:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+    path: hidarihitomi/rule/rule-provider_GlobalMedia.yaml
+    interval: 86400
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+    path: hidarihitomi/rule/rule-provider_Telegram.yaml
+    interval: 86400
+  Twitter:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml
+    path: hidarihitomi/rule/rule-provider_Twitter.yaml
+    interval: 86400
+  Facebook:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/Facebook/Facebook.yaml
+    path: hidarihitomi/rule/rule-provider_Facebook.yaml
+    interval: 86400
+  Instagram:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/Instagram/Instagram.yaml
+    path: hidarihitomi/rule/rule-provider_Instagram.yaml
+    interval: 86400
+  OneDrive:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml
+    path: hidarihitomi/rule/rule-provider_OneDrive.yaml
+    interval: 86400
+  SteamCN:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
+    path: hidarihitomi/rule/rule-provider_SteamCN.yaml
+    interval: 86400
+  China:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/China/China.yaml
+    path: hidarihitomi/rule/rule-provider_China.yaml
+    interval: 86400
+  ChinaIPs_IP:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml
+    path: hidarihitomi/rule/rule-provider_ChinaIPs_IP.yaml
+    interval: 86400
+  Proxy_Classical:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Classical.yaml
+    path: hidarihitomi/rule/rule-provider_Proxy_Classical.yaml
+    interval: 86400
+rules:
+  - RULE-SET,Lan,DIRECT
+  - RULE-SET,GoogleFCM,Proxies
+  - RULE-SET,NetEaseMusic,Proxies
+  - RULE-SET,Porn,Proxies
+  - RULE-SET,GlobalMedia,Proxies
+  - RULE-SET,Telegram,Proxies
+  - RULE-SET,Twitter,Proxies
+  - RULE-SET,Facebook,Proxies
+  - RULE-SET,Instagram,Proxies
+  - RULE-SET,OneDrive,Proxies
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,China,DIRECT
+  - RULE-SET,ChinaIPs_IP,DIRECT
+  - RULE-SET,Proxy_Classical,Proxies
+  - GEOIP,CN,DIRECT
